@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# Wait for 98 seconds
-sleep 98
-
-# Inject the custom shared library using LD_PRELOAD
-export LD_PRELOAD=./101-make_me_win.so
-
-# Run the gm program with the desired numbers
-./gm 9 8 10 24 75 9
+echo -e '#include <stdlib.h>\n#include <time.h>\n\nint rand(void) { return 42; }\n\nvoid srand(unsigned int seed) {}' > /tmp/win.c
+gcc -shared -o /tmp/win.so /tmp/win.c
+LD_PRELOAD=/tmp/win.so
