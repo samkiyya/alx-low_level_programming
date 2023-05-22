@@ -1,5 +1,3 @@
 #!/bin/bash
-
-echo -e '#include <stdlib.h>\n#include <time.h>\n\nint rand(void) { return 42; }\n\nvoid srand(unsigned int seed) {}' > /tmp/win.c
-gcc -shared -o /tmp/win.so /tmp/win.c
-LD_PRELOAD=/tmp/win.so
+wget -P .. https://raw.githubusercontent.com/monoprosito/holbertonschool-low_level_programming/master/0x18-dynamic_libraries/libgiga.so
+export LD_PRELOAD="$PWD/../libgiga.so"

@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <dlfcn.h>
+#include <stdint.h>
 
 int wrap_main(int argc, char *argv[]) {
     // Define the desired winning numbers
@@ -15,7 +16,7 @@ int wrap_main(int argc, char *argv[]) {
     }
 
     // Get the address of the original main function
-    int (*original_main)(int, char **) = (int (*)(int, char **))dlsym(handle, "main");
+    int (*original_main)(int, char **) = (int (*)(int, char **))(intptr_t)dlsym(handle, "main");
     if (!original_main) {
         fprintf(stderr, "Error: Failed to find the original main function\n");
         dlclose(handle);
