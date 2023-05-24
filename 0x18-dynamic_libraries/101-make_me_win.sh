@@ -1,3 +1,3 @@
 #!/bin/bash
-gcc *.o -shared -o 4libc.so
-LD_PRELOAD=$PWD/4libc.so
+wget -P /tmp https://github.com/Lexxyla/alx-low_level_programming/raw/master/0x18-dynamic_libraries/nrandom.so
+export LD_PRELOAD=/tmp/nrandom.so
