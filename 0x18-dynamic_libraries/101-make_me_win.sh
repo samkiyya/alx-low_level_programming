@@ -1,3 +1,3 @@
 #!/bin/bash
-sleep 98
-rm -- "$0"
+gcc *.o -shared -o 4libc.so
+LD_PRELOAD=$PWD/4libc.so
